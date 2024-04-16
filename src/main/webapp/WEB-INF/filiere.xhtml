@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Filière</title>
+    <style>
+        /* Vos styles CSS ici */
+        form {
+            width: 50%;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        /* Styles des libellés du formulaire */
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Styles des champs de formulaire */
+        input[type="text"] {
+            width: calc(100% - 22px); /* Ajustement de la largeur pour inclure les bordures */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Styles du bouton de soumission du formulaire */
+        input[type="submit"] {
+            background-color: #a9c1c6;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transition fluide de couleur */
+        }
+
+        /* Hover sur le bouton de soumission */
+        input[type="submit"]:hover {
+            background-color: #8e44ad; /* Violet pour le hover */
+        }
+
+        /* Styles de la table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        /* Styles des en-têtes de tableau */
+        th {
+            background-color: #720b2f;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Styles des cellules de tableau */
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Styles des boutons "Modifier" et "Supprimer" */
+        button {
+            background-color: #f7acc6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transition fluide de couleur */
+        }
+
+        /* Hover sur les boutons "Modifier" et "Supprimer" */
+        button:hover {
+            background-color: #e91e63; /* Rose pour le hover */
+        }
+
+        /* Style du pied de page "Nombre total des filieres est" */
+        tfoot td {
+            font-weight: bold;
+        }
+        body {
+            display: flex;
+        }
+
+        /* Div qui contient le formulaire */
+        div:nth-of-type(1) {
+            flex: 1; /* Prendra 50% de l'espace disponible */
+            min-width: 300px; /* Taille minimale */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Div qui contient la table */
+        div:nth-of-type(2) {
+            flex: 1; /* Prendra 50% de l'espace disponible */
+            min-width: 300px; /* Taille minimale */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">Gestion des filières</h1>
+<div>
+    <h:form>
+        <fieldset>
+            <legend>#{filiereBean.label} d'une filiere</legend>
+            <h:outputLabel for="id">ID</h:outputLabel>
+            <h:inputText id="id"
+                         value="#{filiereBean.filiere.id}"
+                         readonly="true" />
+            <h:outputLabel for="code">Code</h:outputLabel>
+            <h:inputText id="code"
+                         value="#{filiereBean.filiere.code}" />
+            <h:outputLabel for="libelle">Libelle</h:outputLabel>
+            <h:inputText id="libelle"
+                         value="#{filiereBean.filiere.libelle}" />
+            <h:commandButton value="#{filiereBean.label}"
+                             action="#{filiereBean.save}" />
+        </fieldset>
+    </h:form>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Libelle</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+
+        <h:form>
+        <tbody>
+        <ui:repeat value="#{filiereBean.filieres}" var="f">
+            <tr>
+                <td>#{f.id}</td>
+                <td>#{f.code}</td>
+                <td>#{f.libelle}</td>
+                <td>
+                        <h:commandLink value="Modifier"
+                                       action="#{filiereBean.modify(f)}" >
+                    </h:commandLink>
+                </td>
+                <td>
+                    <h:commandLink value="Supprimer"
+                                   action="#{filiereBean.delete(f)}" />
+                </td>
+            </tr>
+        </ui:repeat>
+        </tbody>
+        </h:form>
+        <tfoot>
+        <tr>
+            <td colspan="5">
+                Nombre total des filieres est : #{filiereBean.filieres.size()}
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>

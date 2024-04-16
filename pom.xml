@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>Spring_chool</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>demo1</name>
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <junit.version>5.9.1</junit.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+        <!-- Hibernate -->
+        <!-- permettra d'utiliser les fonctionnalités offertes par Hibernate pour
+            la gestion des entités, des relations entre les objets et
+             la persistance des données dans une base de données relationnelle. -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
+
+
+        <!-- JSF -->
+        <!-- créer des interfaces utilisateur web interactives et dynamiques,
+        en utilisant les composants fournis par ce framework. -->
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.20</version>
+        </dependency>
+
+
+        <!-- développer des applications web en utilisant JSF avec toutes ses fonctionnalités,
+        grâce à l'implémentation spécifique fournie par cette dépendance.-->
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.20</version>
+        </dependency>
+
+
+        <!-- Spring -->
+
+        <!--utiliser les fonctionnalités de base de Spring, telles que l'inversion de contrôle,
+        la gestion des beans,
+        et d'autres fonctionnalités clés offertes par Spring Framework. -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.21.RELEASE</version>
+        </dependency>
+
+        <!-- utiliser les fonctionnalités fournies par Spring ORM pour simplifier l'intégration et
+         la gestion des couches de persistance de données dans ton application, en utilisant les
+         outils de mapping objet-relationnel (ORM) compatibles avec Spring. -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.2.21.RELEASE</version>
+        </dependency>
+
+        <!-- 'utiliser les fonctionnalités de gestion de transactions offertes par Spring,
+        ce qui simplifie la gestion des transactions dans ton application
+        et assure la cohérence des opérations liées à la base de données. -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.2.21.RELEASE</version>
+        </dependency>
+
+        <!-- utiliser les fonctionnalités offertes par Spring Web MVC pour développer des applications web
+        en suivant le modèle MVC, en utilisant des composants tels que les contrôleurs,
+         les vues et la gestion des flux de requêtes. -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.2.21.RELEASE</version>
+        </dependency>
+
+        <!-- utilisée pour gérer efficacement les connexions à une base de données dans les applications
+        Java en fournissant un pool de connexions,
+        ce qui améliore les performances et la gestion des ressources de base de données. -->
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

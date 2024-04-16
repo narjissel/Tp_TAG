@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+   <h:head>
+      <title>Home</title>
+      <style type="text/css">
+         /* Style pour le tableau de bord */
+         .dashboard {
+            background-image: url('https://i.pinimg.com/564x/29/a4/9f/29a49ffbf8e16da55125ba9a696fef58.jpg'); /* Remplacez cette URL par l'adresse URL directe de votre image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px; /* Ajoute une marge aux côtés */
+            box-sizing: border-box;
+         }
+
+         /* Style pour le conteneur des boutons */
+         .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            gap: 20px;
+         }
+
+         /* Style pour les boutons du tableau de bord */
+         .dashboard-button {
+            padding: 15px 30px; /* Ajoutez un peu plus d'espace autour des boutons */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+         }
+
+         /* Style pour le bouton Filiere */
+         .filiere {
+            background-color: #8e35ad; /* Couleur pour le bouton Filiere */
+         }
+
+         /* Style pour le bouton Etudiant */
+         .etudiant {
+            background-color: #e91e63; /* Couleur pour le bouton Etudiant */
+         }
+
+         /* Hover sur les boutons */
+         .dashboard-button:hover {
+            filter: brightness(1.1);
+         }
+
+      </style>
+   </h:head>
+   <h:body>
+      <div class="dashboard">
+         <div class="button-container">
+            <h:form>
+               <h:commandButton value="Filiere" action="filiere" class="dashboard-button filiere"/>
+               <h:commandButton value="Etudiant" action="etudiant" class="dashboard-button etudiant"/>
+            </h:form>
+         </div>
+      </div>
+   </h:body>
+</f:view>
+</html>

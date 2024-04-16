@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+   <title>Etudiant</title>
+   <style type="text/css">
+      /* Styles */
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f4f4f4;
+         margin: 0;
+         padding: 0;
+      }
+
+      .container {
+         width: 80%;
+         margin: 20px auto;
+      }
+
+      h1 {
+         text-align: center;
+         margin-bottom: 30px;
+         color: #8e44ad;
+      }
+
+      /* Form */
+      form {
+         width: 60%;
+         margin: 0 auto;
+         background-color: #fff;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form fieldset {
+         border: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      form label {
+         display: block;
+         margin-bottom: 5px;
+         color: #000;
+      }
+
+      form input[type="text"],
+      form select {
+         width: calc(100% - 22px);
+         padding: 10px;
+         margin-bottom: 15px;
+         border: 1px solid #bbb;
+         border-radius: 4px;
+         box-sizing: border-box;
+      }
+
+      form input[type="submit"] {
+         background-color: #8e44ad;
+         color: #fff;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      /* Table */
+      table {
+         width: 100%;
+         border-collapse: collapse;
+         margin-top: 30px;
+         background-color: #fff;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      table th {
+         background-color: #8e44ad;
+         color: #fff;
+         padding: 12px;
+         text-align: left;
+      }
+
+      table td {
+         border: 1px solid #bbb;
+         padding: 12px;
+         text-align: left;
+      }
+
+      table tr:nth-child(even) {
+         background-color: #f9f9f9;
+      }
+
+      /* Buttons */
+      a button {
+         background-color:#8e44ad;
+         color: #fff;
+         border: none;
+         padding: 8px 15px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         border-radius: 4px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+      }
+
+      a button:hover {
+         background-color: #e91e63;
+      }
+
+      /* Footer */
+      tfoot td {
+         font-weight: bold;
+         color: #000;
+         padding-top: 10px;
+      }
+      .container {
+         width: 80%;
+         margin: 20px auto;
+      }
+
+      .flex-container {
+         display: flex;
+         justify-content: space-between;
+      }
+
+      .left-column {
+         width: 45%; /* Ajustez la largeur selon vos besoins */
+      }
+
+      .right-column {
+         width: 45%; /* Ajustez la largeur selon vos besoins */
+      }
+      .container {
+         width: 80%;
+         margin: 20px auto;
+      }
+
+      .flex-container {
+         display: flex;
+      }
+
+      .left-column {
+         width: 50%; /* Ajustez la largeur selon vos besoins */
+         float: left; /* Placez la colonne à gauche */
+      }
+
+      .right-column {
+         width: 50%; /* Ajustez la largeur selon vos besoins */
+         float: right; /* Placez la colonne à droite */
+      }
+   </style>
+</head>
+
+<body>
+<h1 align="center">Gestion des étudiants</h1>
+<div>
+   <h:form>
+      <fieldset>
+         <legend>#{etudiantBean.label} d'un étudiant</legend>
+         <h:outputLabel for="id_e">ID</h:outputLabel>
+         <h:inputText id="id_e" value="#{etudiantBean.etudiant.id}" readonly="true" />
+
+         <h:outputLabel for="nom">Nom</h:outputLabel>
+         <h:inputText id="nom" value="#{etudiantBean.etudiant.nom}" />
+
+         <h:outputLabel for="prenom">Prenom</h:outputLabel>
+         <h:inputText id="prenom" value="#{etudiantBean.etudiant.prenom}" />
+
+         <h:outputLabel for="cne">CNE</h:outputLabel>
+         <h:inputText id="cne" value="#{etudiantBean.etudiant.cne}" />
+
+         <h:outputLabel for="filiere">Filiere</h:outputLabel>
+
+         <h:selectOneMenu id="filiere" value="#{etudiantBean.filiere}">
+            <f:selectItems value="#{filiereBean.filieres}" var="f" itemValue="#{f.id}" itemLabel="#{f.code}" />
+         </h:selectOneMenu>
+
+         <h:commandButton value="#{etudiantBean.label}" action="#{etudiantBean.save}" />
+      </fieldset>
+   </h:form>
+</div>
+<div>
+   <h:form>
+      <table>
+         <thead>
+         <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>CNE</th>
+            <th>Filiere</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+         </tr>
+         </thead>
+         <tbody>
+         <ui:repeat value="#{etudiantBean.etudiants}" var="e">
+            <tr>
+               <td>#{e.id}</td>
+               <td>#{e.nom}</td>
+               <td>#{e.prenom}</td>
+               <td>#{e.cne}</td>
+               <td>#{e.filiere.code}</td>
+
+               <td>
+                  <h:commandLink value="Modifier" action="#{etudiantBean.modify(e)}" />
+               </td>
+               <td>
+                  <h:commandLink value="Supprimer" action="#{etudiantBean.delete(e)}" />
+               </td>
+            </tr>
+         </ui:repeat>
+         </tbody>
+         <tfoot>
+         <tr>
+            <td colspan="7">Nombre total des étudiants : #{etudiantBean.etudiants.size()}</td>
+         </tr>
+         </tfoot>
+      </table>
+   </h:form>
+</div>
+</body>
+
+
+</html>
